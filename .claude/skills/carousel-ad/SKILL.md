@@ -41,3 +41,9 @@ Worked example: `campaigns/2026-10_idod-carousel/`.
 - Don't use OPENAI_API_KEY here; real photos need no generation. If a
   generated background is wanted, use `image-gen/` (image-only key).
 - Commit/push to the branch the session specifies; no PR unless asked.
+
+## AI-art variant
+For a richer design: adapt `campaigns/2026-10_idod-carousel/gen_art.py` (text-free
+`images.generate` backgrounds via `image-gen/`) and `build_ai.py` (art + rounded
+photo cards + white panels behind text so art never sits under copy). Never send
+real student photos to OpenAI (images.edit is not an approved endpoint in SECURITY.md).

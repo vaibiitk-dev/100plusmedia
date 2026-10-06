@@ -9,3 +9,8 @@ first event's photos. It follows `brand-assets/`.
 `photos/` and `slides/` are git-ignored: they show identifiable students and
 this repository is public. Keep them out of git unless every parent has given
 consent and the owner has approved.
+
+## AI-art version
+`gen_art.py` makes 4 backgrounds with `gpt-image-1` (images.generate only,
+medium quality, ~4 images; no photos are sent to OpenAI). `build_ai.py` composites them with
+the real photos, brand fonts and logo into `slides_ai/` (git-ignored).
