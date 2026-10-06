@@ -7,10 +7,9 @@ import openai_image_client as c  # noqa: E402
 
 PROMPT = ("A minimal modern social media post background, warm sunburst gradient, "
           "clean negative space for text overlay, flat design, no text.")
-OUT = Path(__file__).parent / "output" / "test_image.png"
 
 try:
-    path = c.generate_image(PROMPT, "1024x1024", "standard", OUT)
+    path = c.generate_image(PROMPT, "1024x1024", "standard", name="test-sunburst-background")
     print(f"SUCCESS: saved {path}\nModel used: {c._model}")
 except Exception as e:
     # Never print str(e): API auth errors echo a masked fragment of the key.

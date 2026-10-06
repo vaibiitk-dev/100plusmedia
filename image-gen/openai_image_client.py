@@ -12,6 +12,7 @@ instead uses the first verified-available model from MODEL_PREFERENCE.
 """
 import base64
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -58,10 +59,24 @@ def _map_quality(model, quality):
     return {"medium": "standard", "low": "standard", "high": "hd"}.get(quality, quality)
 
 
-def generate_image(prompt, size, quality, output_path=None):
-    """Generate one image and save it. Returns the saved file path.
+def _slug(text, max_words=5):
+    words = re.findall(r"[a-z0-9]+", text.lower())[:max_words]
+    return "-".join(words) or "image"
 
-    output_path: file path; defaults to image-gen/output/<timestamp>.png.
+
+def build_filename(prompt, size, name=None):
+    """Easy-to-grab name: YYYY-MM-DD_HHMMSS_<slug>_<WxH>.png (sorts by date)."""
+    now = datetime.now()
+    slug = _slug(name or prompt)
+    return f"{now:%Y-%m-%d_%H%M%S}_{slug}_{size}.png"
+
+
+def generate_image(prompt, size, quality, output_path=None, name=None):
+    """Generate one image and save it in the repo. Returns the saved file path.
+
+    name: short label used in the filename (defaults to the prompt's first words).
+    output_path: explicit file path; defaults to
+    image-gen/output/YYYY-MM-DD_HHMMSS_<slug>_<size>.png.
     """
     model = _resolve_model()
     q = _map_quality(model, quality)
@@ -78,8 +93,7 @@ def generate_image(prompt, size, quality, output_path=None):
         data = requests.get(item.url, timeout=60).content
 
     if output_path is None:
-        stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-        output_path = OUTPUT_DIR / f"image_{stamp}.png"
+        output_path = OUTPUT_DIR / build_filename(prompt, size, name)
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_bytes(data)

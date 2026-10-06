@@ -15,8 +15,10 @@ python image-gen/test_generate.py
 Uses 1 image, 1024x1024, standard quality. Prints the model used.
 
 ## Output
-Images are saved to `image-gen/output/` (git-ignored). Default names are
-timestamped (`image_YYYYMMDD-HHMMSS.png`); the test writes `test_image.png`.
+Every image is saved in `image-gen/output/` and committed to the repo.
+Names: `YYYY-MM-DD_HHMMSS_<slug>_<WxH>.png`, e.g.
+`2026-10-06_120501_test-sunburst-background_1024x1024.png`. Pass `name=` to
+`generate_image` for a short label; otherwise the prompt's first words are used.
 
 ## Models
 The client lists models and uses the first available of `gpt-image-1`,

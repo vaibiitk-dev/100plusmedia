@@ -12,6 +12,4 @@ __pycache__/
 .venv/
 venv/
 
-# Generated images (keep the folder, not the files)
-image-gen/output/*
-!image-gen/output/.gitkeep
+# Generated images in image-gen/output/ are committed to the repo.
