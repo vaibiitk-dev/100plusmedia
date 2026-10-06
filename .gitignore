@@ -1,0 +1,17 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated images (keep the folder, not the files)
+image-gen/output/*
+!image-gen/output/.gitkeep
