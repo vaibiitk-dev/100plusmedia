@@ -71,17 +71,23 @@ def build_filename(prompt, size, name=None):
     return f"{now:%Y-%m-%d_%H%M%S}_{slug}_{size}.png"
 
 
-def generate_image(prompt, size, quality, output_path=None, name=None):
+def generate_image(prompt, size, quality, output_path=None, name=None, brand=True):
     """Generate one image and save it in the repo. Returns the saved file path.
 
     name: short label used in the filename (defaults to the prompt's first words).
     output_path: explicit file path; defaults to
     image-gen/output/YYYY-MM-DD_HHMMSS_<slug>_<size>.png.
+    brand: prepend the 100 Plus Academy brand brief (brand-assets/). Keep True.
     """
     model = _resolve_model()
     q = _map_quality(model, quality)
     print(f"[image-gen] model={model} size={size} quality={q}")
 
+    if output_path is None:
+        output_path = OUTPUT_DIR / build_filename(prompt, size, name)
+    if brand:
+        from brand import BRAND_PROMPT
+        prompt = BRAND_PROMPT + prompt
     kwargs = dict(model=model, prompt=prompt, size=size, quality=q, n=1)
     if model == "dall-e-3":
         kwargs["response_format"] = "b64_json"
@@ -92,8 +98,6 @@ def generate_image(prompt, size, quality, output_path=None, name=None):
     else:
         data = requests.get(item.url, timeout=60).content
 
-    if output_path is None:
-        output_path = OUTPUT_DIR / build_filename(prompt, size, name)
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_bytes(data)

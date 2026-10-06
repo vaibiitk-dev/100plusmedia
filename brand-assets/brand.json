@@ -1,0 +1,49 @@
+{
+  "name": "100 Plus Academy",
+  "short_name": "100+ Academy",
+  "website": "https://100plusacademy.com",
+  "source": "Analysed from https://100plusacademy.com on 2026-10-06",
+  "tagline": "JEE | NEET | FOUNDATION",
+  "descriptor": "Leading coaching institute in Gurugram for Boards (Class 6-12), JEE, NEET, Olympiads and Foundation; 12+ years; IIT/NIT faculty; small batches; live and 1-to-1 online classes; USA/foreign (AP/SAT/ACT/IB) program.",
+  "colors": {
+    "logo_red": "#EB1F27",
+    "logo_red_dark": "#D92029",
+    "logo_teal": "#3BC0CA",
+    "white": "#FFFFFF",
+    "black": "#000000",
+    "website_red": "#D10300",
+    "website_red_deep": "#CC0F0F",
+    "navy": "#003060",
+    "navy_dark": "#0B2149",
+    "accent_orange": "#FF6938",
+    "light_red_tint": "#FFF0F0",
+    "light_teal_tint": "#E0FAFF"
+  },
+  "fonts": {
+    "headings": "League Spartan (600/700/800)",
+    "body": "Poppins (300-700)",
+    "logo_wordmark": "Montserrat-style bold geometric sans (in logo only)"
+  },
+  "logos": {
+    "primary": "brand-assets/logos/100-plus-academy-logo.png",
+    "with_tagline_square": "brand-assets/logos/100-plus-academy-favicon.png"
+  },
+  "contact": {
+    "phones": ["+91 99901 11965", "+91 98731 11965"],
+    "whatsapp": "+91 92171 40286",
+    "email": "info@100plusacademy.com",
+    "address": "1387-P, Sector 46, Gurugram, Haryana 122018, India",
+    "us_cohort_example_phone": "737-203-6014"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/100plusacademygurgaon",
+    "facebook": "https://www.facebook.com/hundredplusacademy",
+    "youtube": "https://www.youtube.com/@100PLUSACADEMY"
+  },
+  "proof_points": {
+    "google_rating": "4.8/5",
+    "students_taught": "20,000+",
+    "recorded_courses": "200+",
+    "experience": "12+ years"
+  }
+}

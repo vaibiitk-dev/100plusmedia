@@ -29,3 +29,9 @@ Each call logs model, size and quality for cost auditing.
 Create `image-gen/<name>.py`, import `generate_image` from
 `openai_image_client`, and call it with your prompt, size, quality and
 output path. Don't call the OpenAI SDK directly from other scripts.
+
+## Brand rules (mandatory)
+All images must follow `../brand-assets/BRAND_GUIDELINES.md`.
+`generate_image()` prepends the brand brief automatically (`brand=True`);
+add the real logo afterwards with `brand.apply_logo(path)`. Never ask the model
+to draw the logo or text.
